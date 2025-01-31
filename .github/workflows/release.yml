@@ -34,6 +34,7 @@ jobs:
         with:
           push: false
           changelog_increment_filename: body.md
+          branch: main
           debug: true
       - name: Clean up body.md
         run: |
