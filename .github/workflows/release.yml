@@ -48,6 +48,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push using ssh
         run: |
-          git branch -r
+          git checkout main
           git status
           git push origin main --tags
