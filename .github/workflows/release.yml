@@ -47,4 +47,5 @@ jobs:
       - name: Push using ssh
         run: |
           git branch -r
+          git status
           git push origin main --tags
