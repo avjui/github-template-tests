@@ -4,7 +4,6 @@
       "version": "0.1.0",
       "tag_format": "v$major.$minor.$patch$prerelease",
       "version_type": "semver",
-      "version_files": [],
       "style": [
         [
           "qmark",
