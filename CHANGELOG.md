@@ -1,3 +1,13 @@
+## v0.2.1 (2025-01-31)
+
+### Fix
+
+- test for generate changelog.md
+
+### Refactor
+
+- some color changes
+
 ## v0.2.0 (2025-01-31)
 
 ### Feat
