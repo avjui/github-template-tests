@@ -2,18 +2,18 @@ name: Draft release
 run-name: Draft release ${{ inputs.next_version }}
 
 on:
-  workflow_dispatch:
-    inputs:
-      next_version:
-        required: true
-        type: string
-        description: 'Version name'
+  push:
+    branches:
+      - main
+
 
 permissions:
   contents: write
 
 jobs:
   draft_release:
+    if: "!startsWith(github.event.head_commit.message, 'bump:')"
+
     runs-on: ubuntu-latest
 
     steps:
