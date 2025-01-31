@@ -1,4 +1,3 @@
-
 name: Draft release
 run-name: Draft release ${{ inputs.next_version }}
 
@@ -37,7 +36,10 @@ jobs:
           debug: true
       - name: Clean up body.md
         run: |
-          head -n -3 body.md
+          echo "Clean up release notes"
+          head -n -3 body.md > temp.md
+          rm body.md
+          mv temp.md body.md
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
@@ -47,6 +49,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push using ssh
         run: |
+          echo "LASTHASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
           git checkout main
+          git cherry-pick ${{ env.LASTHASH }}
           git status
-          git push origin main --tags
+          git push origin main
