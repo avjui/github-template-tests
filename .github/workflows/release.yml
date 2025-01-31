@@ -47,6 +47,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push using ssh
         run: |
+          echo "LASTHASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
           git checkout main
+          git cherry-pick ${{ env.LASTHASH }}
           git status
-          git push origin main --tags
+          git push origin main
