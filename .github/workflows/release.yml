@@ -34,8 +34,7 @@ jobs:
         with:
           push: false
           changelog_increment_filename: body.md
-          run: |
-            git status
+          debug: true
       - name: Clean up body.md
         run: |
           head -n -3 body.md
