@@ -29,13 +29,19 @@ jobs:
       - name: Push using ssh
         run: |
           git push origin main --tags
-      - name: Push tags 
-        uses: softprops/action-gh-release@v1
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          body_path: "body.md"
-          tag_name: v${{ env.REVISION }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: body
+          override: true
+          path: body.md  
+      #- name: Push tags 
+      #  uses: softprops/action-gh-release@v1
+      #  with:
+      #    body_path: "body.md"
+      #    tag_name: v${{ env.REVISION }}
+      #  env:
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Pushing back to development
         run: |
           git checkout develop
