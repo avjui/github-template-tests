@@ -35,7 +35,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           body_path: "body.md"
-          tag_name: v$(cat version)
+          tag_name: v${{ env.VERSION }}
           files: |
             body.md
         env:
