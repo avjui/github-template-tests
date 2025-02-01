@@ -8,6 +8,7 @@ This is just for testing different workflows and templates
 - commitizen bump version
 - create tags
 - check commit message for conventional
+- add file to uploaded tag
 
 ## Authors
 
