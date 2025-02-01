@@ -1,13 +1,12 @@
 name: Release
 on:
-  workflow_run:
-    workflows: ["Bump version"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
   release:
-    if: "!startsWith(github.event.head_commit.message, 'bump version')"
+    if: "startsWith(github.event.head_commit.message, 'bump version')"
     runs-on: ubuntu-latest
     name: "Push some release"
     steps:
