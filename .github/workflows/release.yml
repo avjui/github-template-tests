@@ -32,6 +32,9 @@ jobs:
         uses: commitizen-tools/commitizen-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit: false
+          push: false
+          branch: main
           changelog_increment_filename: body.md
           debug: true
       - name: Clean up body.md
@@ -40,6 +43,7 @@ jobs:
           head -n -3 body.md > temp.md
           rm body.md
           mv temp.md body.md
+          rm temp.md
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
@@ -49,8 +53,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push using ssh
         run: |
-          echo "LASTHASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-          git checkout main
-          git cherry-pick ${{ env.LASTHASH }}
+          rm body.md
+          git add CHANGELOG.md
+          git commit -m "bump version to ${{ env.REVISION }}"
           git status
           git push origin main
