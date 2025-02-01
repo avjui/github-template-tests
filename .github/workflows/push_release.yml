@@ -27,10 +27,14 @@ jobs:
           path: .
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print version
+        run: |
+            VER=$(cat version)
+            echo "VERSION=$VER" >> $GITHUB_ENV
       - name: Push tags 
         uses: softprops/action-gh-release@v1
         with:
           body_path: "body.md"
-          tag_name: v${{ env.REVISION }}
+          tag_name: v${{ env.VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
