@@ -1,9 +1,10 @@
 name: Release
 on:
-  push:
-    branches:
-      - main
-
+  workflow_run:
+    workflows: ["Bump version"]
+    types:
+      - completed
+      
 jobs:
   release:
     if: "startsWith(github.event.head_commit.message, 'bump version')"
