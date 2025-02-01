@@ -1,3 +1,35 @@
+## v0.10.0 (2025-02-01)
+
+### Feat
+
+- Update release.yml
+
+### Fix
+
+- Update .cz.json
+- Update release.yml
+
+### Refactor
+
+- version update .cz.json
+
+## v0.8.1 (2025-02-01)
+
+### Fix
+
+- Update .cz.json
+- Update release.yml
+
+## v0.8.0 (2025-02-01)
+
+### Feat
+
+- Update release.yml
+
+### Fix
+
+- Update release.yml
+
 ## v0.7.0 (2025-01-31)
 
 ### Feat
