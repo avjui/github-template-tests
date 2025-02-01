@@ -1,61 +1,26 @@
-name: Draft release
-run-name: Draft release ${{ inputs.next_version }}
+name: Bump version
 
 on:
   push:
     branches:
       - main
 
-permissions:
-  contents: write
-
 jobs:
-  draft_release:
+  bump-version:
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
-
     runs-on: ubuntu-latest
-
+    name: "Bump version and create changelog with commitizen"
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Check out
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          ref: 'develop'
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Configure git
-        run: |
-          git config --local user.email "github-actions@github.com"
-          git config --local user.name "GitHub Actions"
-      
+          ssh-key: "${{ secrets.DEPLOY_KEY }}"
       - name: Create bump and changelog
         uses: commitizen-tools/commitizen-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit: true
           push: false
-          branch: main
-          changelog_increment_filename: body.md
-          debug: true
-      - name: Clean up body.md
-        run: |
-          echo "Clean up release notes"
-          head -n -3 body.md > temp.md
-          rm body.md
-          mv temp.md body.md
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          body_path: "body.md"
-          tag_name: v${{ env.REVISION }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git_redirect_stderr: true
       - name: Push using ssh
         run: |
-          rm body.md
-          echo "git status develop"
-          git status
-          git checkout main
-          echo "git status main"
-          git status
-          git push origin main
+          git push origin main --tags
