@@ -1,3 +1,10 @@
+## v0.11.0 (2025-02-01)
+
+### Feat
+
+- update release.yml for pushing back changelog and bump version
+- Update release.yml
+
 ## v0.10.0 (2025-02-01)
 
 ### Feat
