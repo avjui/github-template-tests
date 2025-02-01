@@ -53,5 +53,9 @@ jobs:
       - name: Push using ssh
         run: |
           rm body.md
+          echo "git status develop"
+          git status
+          git checkout main
+          echo "git status main"
           git status
           git push origin main
