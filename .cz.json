@@ -1,13 +1,13 @@
 {
   "commitizen": {
     "name": "cz_conventional_commits",
-    "version": "0.9.0",
+    "version": "0.9.2",
     "tag_format": "v$major.$minor.$patch$prerelease",
     "version_type": "semver",
     "style": [
       [
         "qmark",
-        "fg:#ff9d01 bold"
+        "fg:#ff9d00 bold"
       ],
       [
         "question",
