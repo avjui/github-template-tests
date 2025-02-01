@@ -41,4 +41,6 @@ jobs:
           git checkout develop
           git pull
           git merge origin/main
-          git push origin development
+          git status
+          git log -1 --name-status
+          git push origin develop
