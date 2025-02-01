@@ -1,3 +1,13 @@
+## v0.11.1 (2025-02-01)
+
+### Fix
+
+- branch name in release.yml
+
+### Refactor
+
+- Update .cz.json
+
 ## v0.11.0 (2025-02-01)
 
 ### Feat
